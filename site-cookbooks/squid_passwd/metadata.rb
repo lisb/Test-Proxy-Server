@@ -1,0 +1,7 @@
+name 'squid_passwd'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures squid_passwd'
+long_description 'Installs/Configures squid_passwd'
+version '0.1.0'

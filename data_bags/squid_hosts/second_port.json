@@ -1,0 +1,8 @@
+{
+  "id": "second_port",
+  "type": "myport",
+  "net": [
+    "3129"
+  ]
+}
+

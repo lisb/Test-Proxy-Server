@@ -24,6 +24,7 @@ Vagrant.configure(2) do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "forwarded_port", guest: 3128, host: 3128
+  config.vm.network "forwarded_port", guest: 3129, host: 3129
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -73,6 +74,15 @@ Vagrant.configure(2) do |config|
   config.berkshelf.enabled = true
 
   config.vm.provision :chef_solo do |chef|
+    chef.json = {
+      "squid" => {
+        "port" => [3128, 3129],
+        "cache_peer" => "auth_param basic program /usr/lib/squid3/ncsa_auth /etc/squid_passwd" 
+      }
+    }
+    chef.data_bags_path = %w(data_bags)
+    chef.add_recipe "squid_passwd"
     chef.add_recipe "squid"
   end
+
 end

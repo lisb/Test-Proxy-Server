@@ -1,0 +1,8 @@
+{
+  "id": "basic_auth",
+  "type": "proxy_auth",
+  "net": [
+    "REQUIRED"
+  ]
+}
+

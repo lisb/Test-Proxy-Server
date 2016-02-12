@@ -1,0 +1,12 @@
+{
+  "id": "second_port",
+  "acl": [
+    [
+      "basic_auth localnet","allow"
+    ],
+    [
+      "", "deny"
+    ]
+  ]
+}
+

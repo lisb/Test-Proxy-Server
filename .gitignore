@@ -31,3 +31,16 @@ Temporary Items
 .apdisk
 
 
+### https://raw.github.com/github/gitignore/fa441f903154d8159ef71db23d4816d802450fef/ChefCookbook.gitignore
+
+.vagrant
+/cookbooks
+
+# Bundler
+bin/*
+.bundle/*
+
+.kitchen/
+.kitchen.local.yml
+
+

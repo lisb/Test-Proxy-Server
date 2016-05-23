@@ -23,8 +23,6 @@ Vagrant.configure(2) do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 3128, host: 3128
-  config.vm.network "forwarded_port", guest: 3129, host: 3129
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -34,6 +32,7 @@ Vagrant.configure(2) do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network"
+  config.vm.network "public_network",use_dhcp_assigned_default_route: true
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -77,12 +76,15 @@ Vagrant.configure(2) do |config|
     chef.json = {
       "squid" => {
         "port" => [3128, 3129],
-        "cache_peer" => "auth_param basic program /usr/lib/squid3/ncsa_auth /etc/squid_passwd" 
+        "cache_peer" => "auth_param basic program /usr/lib/squid3/ncsa_auth /etc/squid_passwd",
+        "listen_interface" => "eth1"
       }
     }
     chef.data_bags_path = %w(data_bags)
     chef.add_recipe "squid_passwd"
     chef.add_recipe "squid"
+    chef.add_recipe "apache2"
+    chef.add_recipe "http_proxy_apache2"
   end
 
 end

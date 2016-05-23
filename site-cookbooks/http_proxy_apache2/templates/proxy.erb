@@ -1,0 +1,5 @@
+function FindProxyForURL(url, host)
+{
+  // First entry is wrong address to test failover. Second entry is right proxy address.
+  return "PROXY <%= node["ipaddress"] %>:3127; PROXY <%= node["ipaddress"] %>:3128;";
+}

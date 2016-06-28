@@ -1,4 +1,4 @@
-Test Proxy Server
+テスト用に仮想マシンでプロキシサーバーを構築するプロジェクト。
 
 構築されるProxy
 =====
@@ -54,3 +54,7 @@ Test Proxy Server
   chef-solo は deprecated であり chef-zero を使うのが適切だが、そちらを習得している時間が取れなかったので chef-solo を利用。
 - Berkshelf
 - Squid
+
+プロキシのログディレクトリ
+======
+`/var/log/squid3`
